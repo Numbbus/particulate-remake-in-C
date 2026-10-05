@@ -2,11 +2,8 @@
 #include "stdio.h"
 #include "string.h"
 
-int main(void)
-{
+int main(void) {
 
-// Initialization
-    //--------------------------------------------------------------------------------------
     const int screenWidth = 1280;
     const int screenHeight = 720;
 
@@ -22,20 +19,17 @@ int main(void)
     InitWindow(screenWidth, screenHeight, "Basic Sand Sim Demo");
     SetTargetFPS(60);
 
-    // Main game loop
     while (!WindowShouldClose())    
     {
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsMouseButtonDown(MOUSE_BUTTON_LEFT)){
-            //bgColor = WHITE;
+            
             Vector2 mpos = GetMousePosition();
             int x = mpos.x / gridSize;
             int y = mpos.y / gridSize;
 
             if (matrix[y][x] == 0){
                 matrix[y][x] = 1;
-            }/*else{
-                matrix[y][x] = 0;
-            }*/
+            }
         }
 
         BeginDrawing();
@@ -52,13 +46,12 @@ int main(void)
                         matrix[r+1][c] = 1;
                     }
                     else if (matrix[r+1][c] == 1){
-
                         if(matrix[r+1][c+1] == 0){
                             matrix[r][c] = 0;
                             matrix[r+1][c+1] = 1;
                         }else if(matrix[r+1][c-1] == 0){
                             matrix[r][c] = 0;
-                            matrix[r+1][c-1] = 1;   
+                            matrix[r+1][c-1] = 1;
                         }
                     }
 
